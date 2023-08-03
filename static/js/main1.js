@@ -1,7 +1,7 @@
 function myFunction(){
-    window.location.href = "/templates/secondpage.html";
+    window.location.href = "/secondpage";
 }
 
 function anotherfunction(){
-    window.location.href = "/templates/index.html";
+    window.location.href = "/";
 }

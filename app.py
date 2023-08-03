@@ -9,6 +9,9 @@ app.config['TEMPLATES_AUTO_RELOAD'] = True
 def index():
     return render_template('index.html')
 
+@app.route('/secondpage')
+def second_page():
+    return render_template('secondpage.html')
 
 if __name__ == '__main__':
     app.run()
