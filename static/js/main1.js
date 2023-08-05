@@ -13,7 +13,7 @@ function thirdpage()
 function search(){
     var query = document.getElementById('query').value;
     console.log('Query value:', query);
-    fetch('/search',  {
+    fetch('/thirdpage',  {
     method: 'POST', 
     headers:     {
         'Content-Type': 'application/x-www-form-urlencoded'

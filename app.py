@@ -14,31 +14,33 @@ def index():
 def second_page():
     return render_template('secondpage.html')
 
-@app.route('/thirdpage')
-def third_page():
-    return render_template('thirdpage.html')
+@app.route('/thirdpage', methods=['GET','POST'])
+def thirdpage():
+    if request.method == 'POST':
+        query = request.form['query']
 
-@app.route('/thirdpage', methods=['POST'])
-def search():
-    query = request.form['query']
+        headers = {
+        "X-RapidAPI-Key": "a7794b9a36mshed157cdb4537f8ap1b3af5jsn3878cc4f1a3c",
 
-    headers = {
-        'X-RAPIDAPI-KEY': RAPIDAPI_KEY
-    }
+        "X-RapidAPI-Host": "yahoo-finance127.p.rapidapi.com"
+        }
 
-    api_url = "https://apidojo-yahoo-finance-v1.p.rapidapi.com/auto-complete"
-    response = requests.get(api_url, headers=headers)
+        api_url = "https://yahoo-finance127.p.rapidapi.com/search/"+query
+        response = requests.get(api_url, headers=headers)
 
     if response.status_code == 200:
         data = response.json()
-        results = data['results']
+
+        results = data.get('quotes', [])
+    
+        print(results)
         return jsonify(results)
     else:
         return jsonify([])
+    
 
-    #return render_template('thirdpage.html')
-
-
+    return 
+render_template('thirdpage.html')
 
 if __name__ == '__main__':
     app.run()
