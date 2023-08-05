@@ -1,0 +1,15 @@
+{% extends 'base.html' %} 
+{% block head %}
+<h1 class="center">Search Bar</h1>
+
+{% endblock %}
+
+{% block body %} 
+    <form>
+        <input type="text" id="query" placeholder="Enter the stock name">
+        <button class = "button" onclick = "search()">Search</button>
+    </form>
+    <div id = "search-results"></div>
+    
+    <script src = "/static/js/main1.js"></script>
+{% endblock %}

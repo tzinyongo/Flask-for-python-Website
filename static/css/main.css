@@ -2,22 +2,22 @@ body {
     margin: 0; 
     font-family: sans-serif; 
 
-    background-color: black;
+    background-color: white;
 }
 
 .center{
     margin: 50; 
-    color: white
+    color: black
 }
 
 .large{
     font-size: 200%; 
-    color: white
+    color: rgb(22, 21, 21)
 }
 
 .small{
    text-align: center;
-   color: white; 
+   color: rgb(19, 18, 18); 
 }
 
 .button{
@@ -30,5 +30,18 @@ body {
     cursor: pointer; 
     bottom: 10%;
     right: 10%; 
+
+}
+
+.button2{
+    border-width: 15;
+    border-color: black;
+    background-color: grey;
+    font-size: 18px; 
+    position: absolute;
+    text-align: center;
+    cursor: pointer; 
+    bottom: 10%;
+    left: 20%; 
 
 }
