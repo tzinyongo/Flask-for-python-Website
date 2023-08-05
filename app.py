@@ -1,9 +1,9 @@
 from flask import Flask, render_template, request, jsonify
 import requests
 app = Flask(__name__)
-app.jinja_env.auto_reload = True  # This enables auto-reloading of templates during development.
+app.jinja_env.auto_reload = True
 app.config['TEMPLATES_AUTO_RELOAD'] = True
-# Your view functions and other configurations go here.
+
 
 RAPIDAPI_KEY = "c31808e9camsh88eaebb5c2c6f84p158cf2jsne30fc5cd6235"
 @app.route('/')
