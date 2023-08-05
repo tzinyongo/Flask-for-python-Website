@@ -15,7 +15,7 @@ def second_page():
     return render_template('secondpage.html')
 
 @app.route('/thirdpage', methods=['GET','POST'])
-def thirdpage():
+def third_page():
     if request.method == 'POST':
         query = request.form['query']
 
@@ -28,19 +28,17 @@ def thirdpage():
         api_url = "https://yahoo-finance127.p.rapidapi.com/search/"+query
         response = requests.get(api_url, headers=headers)
 
-    if response.status_code == 200:
-        data = response.json()
+        if response.status_code == 200:
+            data = response.json()
 
-        results = data.get('quotes', [])
+            results = data.get('quotes', [])
     
-        print(results)
-        return jsonify(results)
-    else:
-        return jsonify([])
-    
-
-    return 
-render_template('thirdpage.html')
+            print(results)
+            return jsonify(results)
+        else:
+            return jsonify([])
+      
+    return render_template('thirdpage.html')
 
 if __name__ == '__main__':
     app.run()
