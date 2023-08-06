@@ -28,15 +28,15 @@ def third_page():
         api_url = "https://yahoo-finance127.p.rapidapi.com/search/"+query
         response = requests.get(api_url, headers=headers)
 
-        if response.status_code == 200:
-            data = response.json()
+        #if response.status_code == 200:
+        #    data = response.json()
 
-            results = data.get('quotes', [])
-    
-            print(results)
-            return jsonify(results)
-        else:
-            return jsonify([])
+        #    results = data.get('quotes', [])
+
+        print(response.json())
+        #    return jsonify(results)
+        #else:
+        #return jsonify([])
       
     return render_template('thirdpage.html')
 
