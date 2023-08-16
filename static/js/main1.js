@@ -24,13 +24,17 @@ function search(){
 
     .then(response=> response.json())
     .then(data => {
+        console.log('Received data:', data); 
         var resultsDiv = document.getElementById('search-results');
         resultsDiv.innerHTML = '<h3>Search Results:</h3>';
         if(data.length > 0) 
         {
             for(var i = 0; i < data.length; i++)
             {
-                resultsDiv.innerHTML += '<p>' + data[i] + '</p>';
+                resultsDiv.innerHTML += '<p><strong>Exchange:</strong>' + data[i].exchange + '</p>';
+                resultsDiv.innerHTML += '<p><strong>Short Name:</strong> ' + data[i].shortname + '</p>';
+                resultsDiv.innerHTML += '<p><strong>Industry:</strong> ' + data[i].industry + '</p>';
+
 
             }
         }

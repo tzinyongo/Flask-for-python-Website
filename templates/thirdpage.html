@@ -1,15 +1,24 @@
 {% extends 'base.html' %} 
 {% block head %}
 <h1 class="center">Search Bar</h1>
-
-{% endblock %}
-
-{% block body %} 
     <form>
         <input type="text" id="query" placeholder="Enter the stock name">
         <button class = "button" onclick = "search()">Search</button>
     </form>
     <div id = "search-results"></div>
-    
-    <script src = "/static/js/main1.js"></script>
+
+<script src = "/static/js/main1.js"></script>
+
 {% endblock %}
+
+{% block body %} 
+    <div> 
+        <p class ="large"> {{stock_data}} </p>
+        {% for stock in stock_data %}
+            <span> Exchange: {{stock.exchange}}</spanp>
+            <span> Short Name: {{stock.shortname}}</span>
+            <span> Industry: {{stock.industry}}</span>
+        {% endfor %}
+    </div>
+{% endblock %}
+

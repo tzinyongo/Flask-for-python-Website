@@ -1,6 +1,8 @@
-from flask import Flask, render_template, request, jsonify
-import requests
+from flask import Flask, render_template, request, jsonify, json
+import requests, urllib.request 
+from flask_cors import CORS
 app = Flask(__name__)
+CORS(app)
 app.jinja_env.auto_reload = True
 app.config['TEMPLATES_AUTO_RELOAD'] = True
 
@@ -18,6 +20,7 @@ def second_page():
 def third_page():
     if request.method == 'POST':
         query = request.form['query']
+        api_url = "https://yahoo-finance127.p.rapidapi.com/search/"+query
 
         headers = {
         "X-RapidAPI-Key": "a7794b9a36mshed157cdb4537f8ap1b3af5jsn3878cc4f1a3c",
@@ -25,20 +28,40 @@ def third_page():
         "X-RapidAPI-Host": "yahoo-finance127.p.rapidapi.com"
         }
 
-        api_url = "https://yahoo-finance127.p.rapidapi.com/search/"+query
         response = requests.get(api_url, headers=headers)
+  
+        data = response.json()
+        stock_data = data.get('quotes',[])
+        
+        
+        print(stock_data)
+        return render_template('thirdpage.html', stock_data=stock_data)
+            
+    return render_template('thirdpage.html')
 
-        #if response.status_code == 200:
+
+
+if __name__ == '__main__':
+    app.run()
+
+
+
+ #if response.status_code == 200:
         #    data = response.json()
 
         #    results = data.get('quotes', [])
 
-        print(response.json())
+        #print(response.json())
         #    return jsonify(results)
         #else:
         #return jsonify([])
-      
-    return render_template('thirdpage.html')
 
-if __name__ == '__main__':
-    app.run()
+ ##for stock in data.get('quotes'):
+            #stock_info = {
+              #  "stock": stock.get("shortname"),
+               # "industry": stock.get("industry"),
+                #"symbol": stock.get("symbol"),
+                #"score": stock.get("score"),
+           ## }
+            #stock_data.append(stock_info)
+        #return jsonify({"results": stock_data})
