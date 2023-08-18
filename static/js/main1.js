@@ -19,9 +19,7 @@ function search(){
         'Content-Type': 'application/x-www-form-urlencoded'
     },
     body: 'query=' + encodeURIComponent(query)
-
     })
-
     .then(response=> response.json())
     .then(data => {
         console.log('Received data:', data); 

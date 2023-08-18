@@ -1,24 +1,40 @@
+<!DOCTYPE html>
+<html>
 {% extends 'base.html' %} 
-{% block head %}
-<h1 class="center">Search Bar</h1>
-    <form>
-        <input type="text" id="query" placeholder="Enter the stock name">
-        <button class = "button" onclick = "search()">Search</button>
+    <head>
+        {% block head %}
+        <title>Search Page</title>
+        {% endblock %}
+    </head>
+    <body>
+
+    </body>
+    {% block body %} 
+    <h1 class="center">Search Bar</h1>
+    <form  onsubmit = "search(); return false;">
+        <input type="text" id="query" name = "query" placeholder="Enter the stock name">
+        <button class="button" type="submit">Search</button>
     </form>
-    <div id = "search-results"></div>
-
-<script src = "/static/js/main1.js"></script>
-
-{% endblock %}
-
-{% block body %} 
-    <div> 
-        <p class ="large"> {{stock_data}} </p>
-        {% for stock in stock_data %}
-            <span> Exchange: {{stock.exchange}}</spanp>
-            <span> Short Name: {{stock.shortname}}</span>
-            <span> Industry: {{stock.industry}}</span>
-        {% endfor %}
+    
+    <div id="search-results">
+        <h3>Search Results:</h3>
+        {% if stock_data %}
+            <ul>
+                {% for stock in stock_data %}
+                <li>
+                    <strong>Symbol:</strong> {{ stock['symbol'] }}<br>
+                    <strong>Name:</strong> {{ stock['shortname'] }}<br>
+                    <strong>Exchange:</strong> {{ stock['exchange'] }}<br>
+                </li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>No results found.</p>
+        {% endif %}
     </div>
+    <script src = "/static/js/main1.js"></script>
 {% endblock %}
+    </body>
+</html>
+
 
