@@ -31,8 +31,9 @@ function search(){
             {
                 resultsDiv.innerHTML += '<p><strong>Exchange:</strong>' + data[i].exchange + '</p>';
                 resultsDiv.innerHTML += '<p><strong>Short Name:</strong> ' + data[i].shortname + '</p>';
+                resultsDiv.innerHTML += '<p><strong>Symbol:</strong> ' + data[i].symbol + '</p>';
                 resultsDiv.innerHTML += '<p><strong>Industry:</strong> ' + data[i].industry + '</p>';
-
+                resultsDiv.innerHTML += '<p><strong>Score:</strong> ' + data[i].score + '</p>';
 
             }
         }
